@@ -1,5 +1,6 @@
 import { Review } from './../../models/review';
 import { Component } from '@angular/core';
+import ReviewsJson from '../../../assets/json/reviews.json';
 
 @Component({
   selector: 'app-reviews',
@@ -11,28 +12,7 @@ export class ReviewsComponent {
     responsiveOptions: any[] = [];
 
     constructor() {
-      this.reviews = [
-        {
-          name: "test1",
-          content: "very good review",
-          date: "1999-13-32"
-        },
-        {
-          name: "test2",
-          content: "very good review",
-          date: "1999-13-32"
-        },
-        {
-          name: "test3",
-          content: "very good review",
-          date: "1999-13-32"
-        },
-        {
-          name: "test4",
-          content: "very good review",
-          date: "1999-13-32"
-        }
-      ];
+      this.reviews = ReviewsJson.reviews;
 
       this.responsiveOptions = [
         {
