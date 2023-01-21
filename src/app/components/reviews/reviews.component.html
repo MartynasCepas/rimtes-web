@@ -1,0 +1,22 @@
+<div class="app-grid">
+  <div class="reviews-container">
+    <p-carousel [value]="reviews" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+      <ng-template pTemplate="header">
+          <h5>What Happy Students & Parents Say</h5>
+      </ng-template>
+      <ng-template let-review pTemplate="item">
+          <div class="product-item">
+              <div class="product-item-content">
+                  <div class="p-mb-3">
+                  </div>
+                  <div>
+                      <h4 class="p-mb-1">{{review.name}}</h4>
+                      <h6 class="p-mt-0 p-mb-3">${{review.content}}</h6>
+                      <h6 class="p-mt-0 p-mb-3">${{review.date}}</h6>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-carousel>
+  </div>
+</div>

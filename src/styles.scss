@@ -1,11 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto-Regular.ttf');
+}
 
 body {
   margin: 0;
+  background: whitesmoke;
+  font-family: 'Roboto';
 }
 
 h1 {
-  font-family: poppins-semibold,poppins,sans-serif;
   line-height: 1.2em;
   font-size: 72px;
   background: transparent;
@@ -14,5 +18,19 @@ h1 {
   outline: 0;
   padding: 0;
   vertical-align: baseline;
-  color: white;
+  color: black;
+}
+
+.app-grid {
+  position: static;
+    display: grid;
+    height: auto;
+    width: 100%;
+    min-width: 500px;
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-bottom: 50px;
+    min-height: 953px;
+    grid-template-rows: repeat(2, min-content) 1fr;
+    grid-template-columns: 100%;
 }

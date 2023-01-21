@@ -1,0 +1,8 @@
+.header-container {
+  width: 100%;
+  height: auto;
+}
+
+:host ::ng-deep .p-menubar {
+  flex-direction: row-reverse;
+}
