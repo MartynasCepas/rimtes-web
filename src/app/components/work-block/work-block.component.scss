@@ -8,7 +8,7 @@
   max-width: 1000px;
   min-width: 730px;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 70px;
   grid-auto-rows: minmax(100px, auto);
   background: white;
   padding: 60px;
@@ -19,6 +19,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 360px;
+    height: 230px;
+    border-radius: 40px;
+    padding: 30px;
+  }
+
+  .block-1 {
+    background: rgba(253, 213, 251, 0.363);
+  }
+
+  .block-2 {
+    background: rgba(126, 178, 192, 0.286);
+  }
+
+  .block-3 {
+    background: rgba(228, 229, 144, 0.374);
+  }
+
+  .block-4 {
+    background: rgba(149, 227, 178, 0.412);
   }
 }

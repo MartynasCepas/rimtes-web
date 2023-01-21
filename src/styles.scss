@@ -25,6 +25,11 @@ h1 {
   color: black;
 }
 
+h2 {
+  text-align: center;
+  color: rgb(50, 50, 50);
+}
+
 .app-grid {
   position: static;
     display: grid;
@@ -34,7 +39,7 @@ h1 {
     padding-left: 130px;
     padding-right: 130px;
     padding-bottom: 50px;
-    min-height: 953px;
+    min-height: 800px;
     grid-template-rows: repeat(2, min-content) 1fr;
     grid-template-columns: 100%;
 }
