@@ -67,5 +67,6 @@
   "contacts.email.label": "El. Paštas",
   "contacts.phone.label": "Telefonas",
   "contacts.socials.label": "Socialiniai tinklai",
-  "contacts.message.label": "Žinutė"
+  "contacts.message.label": "Žinutė",
+  "footer.text" : "@Rimtė Kamuntavičiūtė 2023"
 }
