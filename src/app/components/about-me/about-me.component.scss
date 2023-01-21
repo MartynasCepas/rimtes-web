@@ -3,35 +3,40 @@
   min-width: 300px;
   max-width: 100%;
 
-  .about-me-box {
-    display: flex;
-    width: 100%;
-    max-width: 1300px;
-    justify-content: center;
-    gap: 20px;
-  }
-
   .about-me-box-flex {
     display: flex;
     justify-content: center;
     width: 100%;
     padding-top: 30px;
-  }
 
-  .about-me-image {
-    flex: 0.4;
-
-    img {
+    .about-me-box {
+      display: flex;
+      flex-direction: row;
       width: 100%;
-    }
-  }
+      max-width: 1300px;
+      justify-content: center;
+      gap: 20px;
 
-  .about-me-text {
-    flex: 0.6;
-    background: white;
+      .about-me-image {
+        flex: 0.4;
 
-    p {
-      font-size: 22px;
+        img {
+          width: 100%;
+        }
+      }
+
+      .about-me-text {
+        flex: 0.6;
+        background: white;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        p {
+          font-size: 20px;
+          line-height: 1.5em;
+          font-weight: 100;
+        }
+      }
     }
   }
 }

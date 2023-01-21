@@ -1,6 +1,6 @@
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -17,6 +17,10 @@ import {InputTextModule} from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
     AppRoutingModule,
     ButtonModule,
@@ -38,9 +43,20 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CarouselModule,
     InputTextModule,
     FormsModule,
-    InputTextareaModule
+    InputTextareaModule,
+    TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient]
+			}
+		}),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(http: HttpClient) {
+	return new TranslateHttpLoader(http);
+}
