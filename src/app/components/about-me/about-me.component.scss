@@ -3,8 +3,13 @@
   min-width: 300px;
   max-width: 100%;
 
-  h1 {
-    padding-left: 50px;
+  .header-container {
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      justify-self: center;
+    }
   }
 
   .about-me-box-flex {
@@ -26,6 +31,7 @@
 
         img {
           width: 100%;
+          border-radius: 50px;
         }
       }
 
@@ -34,6 +40,7 @@
         background: white;
         padding-left: 1rem;
         padding-right: 1rem;
+        border-radius: 50px;
 
         p {
           font-size: 25px;

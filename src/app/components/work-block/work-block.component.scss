@@ -5,39 +5,50 @@
   height: auto;
   width: 100%;
   min-height: 630px;
-  max-width: 1000px;
-  min-width: 730px;
+  min-width: 630px;
   grid-template-columns: repeat(2, 1fr);
-  gap: 70px;
+  gap: 70px 50px;
   grid-auto-rows: minmax(100px, auto);
-  background: white;
-  padding: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   justify-self: center;
+  border-radius: 100px;
 
   .block {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 360px;
-    height: 230px;
-    border-radius: 40px;
+    width: 560px;
+    height: 330px;
+    border-radius: 100px;
     padding: 30px;
+
+    p {
+      text-align: center;
+      line-height: 2em;
+      font-size: 28px;
+    }
+
+    h2 {
+      font-size: 38px;
+      font-weight: 700;
+    }
   }
 
   .block-1 {
-    background: rgba(253, 213, 251, 0.363);
+    background: rgb(226, 187, 224);
   }
 
   .block-2 {
-    background: rgba(126, 178, 192, 0.286);
+    background: rgb(151, 204, 218);
   }
 
   .block-3 {
-    background: rgba(228, 229, 144, 0.374);
+    background: rgb(221, 222, 167);
   }
 
   .block-4 {
-    background: rgba(149, 227, 178, 0.412);
+    background: rgb(160, 217, 181);
   }
 }
