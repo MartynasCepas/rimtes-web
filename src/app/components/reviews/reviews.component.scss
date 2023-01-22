@@ -4,9 +4,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  background: lightblue;
-  height: 700px;
+  background: rgba(230, 191, 223, 0.601);
+  height: 570px;
   padding: 30px;
+  border-radius: 100px;
+
+  h2 {
+    font-size: 40px;
+  }
 }
 
 .reviews-title-container {
@@ -15,4 +20,9 @@
 
 .review-block {
   flex: 0.5;
+}
+
+:host ::ng-deep .p-carousel-item {
+  display: flex;
+  justify-content: center;
 }

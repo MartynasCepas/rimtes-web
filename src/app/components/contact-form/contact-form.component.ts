@@ -1,3 +1,4 @@
+import { Env } from './../../../env';
 import { Form } from './../../models/form';
 import { Component } from '@angular/core';
 
@@ -16,5 +17,17 @@ export class ContactFormComponent {
 
   newHero() {
     this.model = new Form();
+  }
+
+  getEmail() {
+    return "El. paštas: " + Env.email;
+  }
+
+  getPhone() {
+    return "Tel. nr: " + Env.phone;
+  }
+
+  getFacebook() {
+    return "Facebook: " + Env.facebook;
   }
 }

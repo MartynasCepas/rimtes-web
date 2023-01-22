@@ -1,40 +1,47 @@
 .landing-section {
-  background-image: url("/assets/images/test-1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin-left: 130px;
+  margin-right: 130px;
 
   .landing-grid {
     .title-container {
-      position: relative;
-      margin: 121px 0px 20px calc((100% - 980px) * 0);
+      margin: 250px 0px 20px calc((100% - 980px) * 0);
       grid-area: 1 / 1 / 2 / 2;
-      justify-self: start;
-      align-self: start;
+      align-self: center;
+      justify-self: center;
     }
 
     .secondary-title-container {
       min-height: 119px;
       height: auto;
-      width: 387px;
+      width: auto;
       position: relative;
       margin: 0px 0px 30px calc((100% - 980px) * 0);
       grid-area: 2 / 1 / 3 / 2;
-      justify-self: start;
+      justify-self: center;
       align-self: start;
 
       p {
         line-height: 1.5em;
-        font-size: 40px;
-
+        text-align: center;
         span {
           line-height: 1.5em;
-          font-size: 40px;
+          font-size: 30px;
         }
       }
     }
 
-    .contact-me-button {
+    .button-container{
+      justify-self: center;
 
+      .contact-me-button {
+        background: lightblue;
+        border: none;
+      }
+
+      .contact-me-button:hover {
+        background: blue;
+        border: none;
+      }
     }
   }
 }

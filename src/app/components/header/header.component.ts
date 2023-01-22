@@ -12,23 +12,21 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: 'About',
+        label: 'Apie mane',
+        routerLink: ['/apie-mane']
       },
       {
-        label: 'Tutoring',
+        label: 'Kainos',
+        routerLink: ['/kainos']
       },
       {
-        label: 'Online Sessions',
+        label: 'Atsiliepimai',
+        routerLink: ['/atsiliepimai']
       },
       {
-        label: 'FAQ',
-      },
-      {
-        label: 'Work Sheets',
-      },
-      {
-        label: 'Contact',
-      },
+        label: 'Kontaktai',
+        routerLink: ['/kontaktai']
+      }
     ];
   }
 }

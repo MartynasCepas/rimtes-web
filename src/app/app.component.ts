@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +15,23 @@ export class AppComponent implements OnInit {
   constructor(
     private config: PrimeNGConfig,
     private translateService: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private element: ElementRef
   ) {
     this.translateService.setDefaultLang('lt');
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-
+    this.router.events.forEach((event) => {
+      if(event instanceof NavigationEnd) {
+        this.scroll(event.url.replaceAll('-','').replaceAll('/', ''));
+      }
     });
+  }
+
+  scroll(id: string) {
+    if(id)
+      document.querySelector('#'+id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 }

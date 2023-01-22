@@ -12,35 +12,50 @@ body {
 
 p {
   color: rgb(50, 50, 50);
+  white-space: pre-wrap;
+  text-align: justify;
 }
 
 h1 {
   line-height: 1.2em;
   font-size: 72px;
   background: transparent;
+  color: rgb(50, 50, 50);
   border: 0;
   margin: 0;
   outline: 0;
   padding: 0;
   vertical-align: baseline;
   color: black;
+  font-weight: 500;
+  white-space: pre-wrap;
 }
 
 h2 {
   text-align: center;
   color: rgb(50, 50, 50);
+  white-space: pre-wrap;
+}
+
+h6 {
+  white-space: pre-wrap;
+  text-align: justify;
+}
+
+span {
+  white-space: pre-wrap;
 }
 
 .app-grid {
   position: static;
-    display: grid;
-    height: auto;
-    width: 100%;
-    min-width: 500px;
-    padding-left: 130px;
-    padding-right: 130px;
-    padding-bottom: 50px;
-    min-height: 800px;
-    grid-template-rows: repeat(2, min-content) 1fr;
-    grid-template-columns: 100%;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-width: 500px;
+  padding-left: 130px;
+  padding-right: 130px;
+  padding-bottom: 50px;
+  min-height: 800px;
+  grid-template-rows: repeat(2, min-content) 1fr;
+  grid-template-columns: 100%;
 }

@@ -1,112 +1,130 @@
 <div class="app-grid">
-  <div class="contact-me-container">
+  <div class="container">
     <div class="contacts-header">
-      <h2>{{'contacts.header' |translate}}</h2>
-      <h5>Tel: 123-456-7890 / Email: info@mysite.com</h5>
+      <h2>{{ "contacts.header" | translate }}</h2>
     </div>
+    <div class="contact-me-container">
+      <div class="form-container">
+        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+          <div class="form-group">
+            <div class="row">
+              <div class="field">
+                <label for="firstName" class="block">{{
+                  "contacts.first.name.label" | translate
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  required
+                  pInputText
+                  [(ngModel)]="model.firstName"
+                  name="firstName"
+                  #name="ngModel"
+                />
+              </div>
 
-    <div class="form-container">
-      <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-        <div class="form-group">
-          <div class="row">
-            <div class="field">
-              <label for="firstName" class="block">{{'contacts.first.name.label' |translate}}</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                required
-                pInputText
-                [(ngModel)]="model.firstName"
-                name="firstName"
-                #name="ngModel"
-              />
+              <div class="field">
+                <label for="lastName" class="block">{{
+                  "contacts.last.name.label" | translate
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  required
+                  pInputText
+                  [(ngModel)]="model.lastName"
+                  name="lastName"
+                  #name="ngModel"
+                />
+              </div>
             </div>
+            <div class="row">
+              <div class="field">
+                <label for="email" class="block">{{
+                  "contacts.email.label" | translate
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  required
+                  pInputText
+                  [(ngModel)]="model.email"
+                  name="email"
+                  #name="ngModel"
+                />
+              </div>
 
-            <div class="field">
-              <label for="lastName" class="block">{{'contacts.last.name.label' |translate}}</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                required
-                pInputText
-                [(ngModel)]="model.lastName"
-                name="lastName"
-                #name="ngModel"
-              />
+              <div class="field">
+                <label for="phone" class="block">{{
+                  "contacts.phone.label" | translate
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  required
+                  pInputText
+                  [(ngModel)]="model.phone"
+                  name="phone"
+                  #name="ngModel"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="social" class="block">{{
+                  "contacts.socials.label" | translate
+                }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="social"
+                  required
+                  pInputText
+                  [(ngModel)]="model.social"
+                  name="social"
+                  #name="ngModel"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="message" class="block">{{
+                  "contacts.message.label" | translate
+                }}</label>
+                <textarea
+                  rows="5"
+                  cols="30"
+                  class="form-control"
+                  required
+                  pInputTextarea
+                  [(ngModel)]="model.message"
+                  [autoResize]="true"
+                  name="message"
+                ></textarea>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="field">
-              <label for="email" class="block">{{'contacts.email.label' |translate}}</label>
-              <input
-                type="text"
-                class="form-control"
-                id="email"
-                required
-                pInputText
-                [(ngModel)]="model.email"
-                name="email"
-                #name="ngModel"
-              />
-            </div>
 
-            <div class="field">
-              <label for="phone" class="block">{{'contacts.phone.label' |translate}}</label>
-              <input
-                type="text"
-                class="form-control"
-                id="phone"
-                required
-                pInputText
-                [(ngModel)]="model.phone"
-                name="phone"
-                #name="ngModel"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="field">
-              <label for="social" class="block">{{'contacts.socials.label' |translate}}</label>
-              <input
-                type="text"
-                class="form-control"
-                id="social"
-                required
-                pInputText
-                [(ngModel)]="model.social"
-                name="social"
-                #name="ngModel"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="field">
-              <label for="message" class="block">{{'contacts.message.label' |translate}}</label>
-              <textarea
-                rows="5"
-                cols="30"
-                class="form-control"
-                required
-                pInputTextarea
-                [(ngModel)]="model.message"
-                [autoResize]="true"
-                name="message"
-              ></textarea>
-            </div>
-          </div>
-        </div>
+          <button
+            type="submit"
+            pButton
+            class="btn btn-success"
+            [disabled]="!heroForm.form.valid"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
 
-        <button
-          type="submit"
-          pButton
-          class="btn btn-success"
-          [disabled]="!heroForm.form.valid"
-        >
-          Submit
-        </button>
-      </form>
+      <div class="my-contacts">
+        <h3>{{ getEmail() }}</h3>
+        <h3>{{ getPhone() }}</h3>
+        <h3>{{ getFacebook() }}</h3>
+      </div>
     </div>
   </div>
 </div>
