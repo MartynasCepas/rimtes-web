@@ -1,6 +1,6 @@
 .landing-section {
-  margin-left: 130px;
-  margin-right: 130px;
+  margin-left: 15%;
+  margin-right: 15%;
 
   .landing-grid {
     .title-container {
@@ -26,6 +26,14 @@
         span {
           line-height: 1.5em;
           font-size: 30px;
+        }
+      }
+
+      @media (max-width: 580px) {
+        p {
+          span {
+            font-size: 20px;
+          }
         }
       }
     }

@@ -14,6 +14,8 @@
 
   .about-me-box-flex {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     padding-top: 30px;
@@ -21,6 +23,7 @@
     .about-me-box {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       width: 100%;
       max-width: 1300px;
       justify-content: center;
@@ -31,6 +34,7 @@
 
         img {
           width: 100%;
+          min-width: 350px;
           border-radius: 50px;
         }
       }
@@ -41,11 +45,18 @@
         padding-left: 1rem;
         padding-right: 1rem;
         border-radius: 50px;
+        min-width: 350px;
 
         p {
           font-size: 25px;
           line-height: 1.5em;
           font-weight: 500;
+        }
+
+        @media (max-width: 580px) {
+          p {
+            font-size: 20px;
+          }
         }
       }
     }

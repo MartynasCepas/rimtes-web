@@ -16,17 +16,12 @@ export class ReviewsComponent {
 
       this.responsiveOptions = [
         {
-            breakpoint: '1024px',
-            numVisible: 3,
-            numScroll: 3
-        },
-        {
-            breakpoint: '768px',
+            breakpoint: '1100px',
             numVisible: 2,
             numScroll: 2
         },
         {
-            breakpoint: '560px',
+            breakpoint: '650px',
             numVisible: 1,
             numScroll: 1
         }
