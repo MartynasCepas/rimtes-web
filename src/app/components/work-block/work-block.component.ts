@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-work-block',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./work-block.component.scss']
 })
 export class WorkBlockComponent {
+
+  @Output() displayModalChange = new EventEmitter<boolean>();
+
+  openModal() {
+    this.displayModalChange.emit(true);
+  }
 
 }

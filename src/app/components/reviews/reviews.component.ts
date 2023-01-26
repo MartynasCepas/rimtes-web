@@ -1,15 +1,18 @@
 import { Review } from './../../models/review';
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import ReviewsJson from '../../../assets/json/reviews.json';
+import { Carousel } from 'primeng/carousel';
 
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class ReviewsComponent {
+export class ReviewsComponent implements OnInit {
     reviews: Review[] = [];
     responsiveOptions: any[] = [];
+
+    @ViewChild('carousel') carousel: Carousel;
 
     constructor() {
       this.reviews = ReviewsJson.reviews;
@@ -27,4 +30,9 @@ export class ReviewsComponent {
         }
     ];
     }
+
+  ngOnInit(): void {
+    console.log(this.carousel)
+  }
+
 }

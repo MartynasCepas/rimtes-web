@@ -1,5 +1,4 @@
 import { Env } from './../../../env';
-import { Form } from './../../models/form';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,17 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss'],
 })
-export class ContactFormComponent {
-  model: Form = new Form();
-  submitted = false;
-
-  onSubmit() {
-    this.submitted = true;
-  }
-
-  newHero() {
-    this.model = new Form();
-  }
+export class ContactsComponent {
 
   getEmail() {
     return "El. paštas: " + Env.email;

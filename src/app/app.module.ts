@@ -1,6 +1,6 @@
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -11,7 +11,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { WorkBlockComponent } from './components/work-block/work-block.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ContactsComponent } from './components/contact-form/contact-form.component';
 import {CarouselModule} from 'primeng/carousel';
 import {InputTextModule} from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DialogModule } from 'primeng/dialog';
+import { RegistrationModalComponent } from './components/registration-modal/registration-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,10 @@ import { HttpClientModule } from '@angular/common/http';
     AboutMeComponent,
     WorkBlockComponent,
     ReviewsComponent,
-    ContactFormComponent,
+    ContactsComponent,
+    RegistrationModalComponent,
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
     CommonModule,
     AppRoutingModule,
@@ -44,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     InputTextModule,
     FormsModule,
     InputTextareaModule,
+    DialogModule,
     TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -51,6 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
 				deps: [HttpClient]
 			}
 		}),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,19 +3,24 @@
     <div class="block block-1">
       <h2>{{'blocks.block.first.header' |translate}}</h2>
       <p>{{'blocks.block.first.content' |translate}}</p>
+      <p class="text-clickable" (click)="openModal()">{{'blocks.rate.group' |translate}}€</p>
     </div>
     <div class="block block-2">
       <h2>{{'block.block.second.header' |translate}}</h2>
       <p>{{'block.block.second.content' |translate}}</p>
-      <p>{{'blocks.rate' |translate}}</p>
+      <div class="rate-div">
+      <p class="text-clickable" (click)="openModal()">{{'blocks.rate.online' |translate}}€</p>
+      </div>
     </div>
     <div class="block block-3">
       <h2>{{'block.block.third.header' |translate}}</h2>
       <p>{{'block.block.third.content' |translate}}</p>
+      <p class="text-clickable" (click)="openModal()">{{'blocks.rate.live' |translate}}€</p>
     </div>
     <div class="block block-4">
       <h2>{{'block.block.fourth.header' |translate}}</h2>
       <p>{{'block.block.fourth.content' |translate}}</p>
+      <p class="text-clickable" (click)="openModal()">{{'blocks.rate.live' |translate}}€</p>
       </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent {
+  @Output() displayModalChange = new EventEmitter<boolean>();
 
+  openModal() {
+    this.displayModalChange.emit(true);
+  }
 }

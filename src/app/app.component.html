@@ -1,9 +1,10 @@
 <app-header></app-header>
 <div class="body">
-  <app-landing-page ></app-landing-page>
+  <app-landing-page (displayModalChange)="onRegistrationModalDisplayChange($event)"></app-landing-page>
   <app-about-me id="apiemane"></app-about-me>
-  <app-work-block id="kainos"></app-work-block>
+  <app-work-block id="kainos" (displayModalChange)="onRegistrationModalDisplayChange($event)"></app-work-block>
   <app-reviews id="atsiliepimai"></app-reviews>
   <app-contact-form id="kontaktai"></app-contact-form>
+  <app-registration-modal [displayModal]="displayRegistrationModal" (displayModalChange)="onRegistrationModalDisplayChange($event)" ></app-registration-modal>
 </div>
 <app-footer></app-footer>

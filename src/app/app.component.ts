@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
 
   title = 'rimtes-web';
 
+  displayRegistrationModal = false;
+
   constructor(
     private config: PrimeNGConfig,
     private translateService: TranslateService,
@@ -33,5 +35,9 @@ export class AppComponent implements OnInit {
   scroll(id: string) {
     if(id)
       document.querySelector('#'+id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+
+  onRegistrationModalDisplayChange(event: boolean) {
+    this.displayRegistrationModal = event;
   }
 }

@@ -37,6 +37,7 @@
       max-height: 330px;
       border-radius: 100px;
       padding: 30px;
+      border: 1.5px solid black;
 
       p {
         text-align: center;
@@ -51,19 +52,25 @@
     }
 
     .block-1 {
-      background: rgb(222, 210, 221);
+      background: rgb(230, 216, 202);
     }
 
     .block-2 {
-      background: rgb(202, 226, 233);
+      background: rgb(230, 216, 202);
     }
 
     .block-3 {
-      background: rgb(226, 226, 199);
+      background: rgb(230, 216, 202);
     }
 
     .block-4 {
-      background: rgb(191, 218, 201);
+      background: rgb(230, 216, 202);
     }
   }
+}
+
+.rate-div {
+  width: 100%;
+  background: yellow;
+  
 }
