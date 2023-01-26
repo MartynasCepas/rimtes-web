@@ -16,9 +16,14 @@
       "date": "2023-01-23"
     },
     {
-      "name": "test4",
-      "content": "very good review",
-      "date": "1999-13-32"
+      "name": "Gabrielė, 8 klasė, lietuvių k, matematika.",
+      "content": "\tMan labai patinka čia kartu mokytis, nes yra galimybė [asidaryti pamokas kurių nesuprantu ir yra galimybė susitikti ir gyvai ir nuotoliniu.",
+      "date": "2023-01-26"
+    },
+    {
+      "name": "Viktorija, 8 klasė, lietuvių k.",
+      "content": "Įstojau į Biržišką. be jūsų pagalbos man nebūtų pavykę. Labai jums ačiū.",
+      "date": "2022-06-02"
     }
   ]
 }
