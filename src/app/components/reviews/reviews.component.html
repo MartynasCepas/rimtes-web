@@ -1,10 +1,7 @@
 <div class="app-grid">
   <div class="reviews-container">
-    <p-carousel #carousel id="carousel" [value]="reviews" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="8000" [responsiveOptions]="responsiveOptions"
+    <p-carousel #carousel id="carousel" [value]="reviews" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="800000" [responsiveOptions]="responsiveOptions"
     >
-      <ng-template pTemplate="header">
-          <h2>{{'reviews.header' |translate}}</h2>
-      </ng-template>
       <ng-template let-review pTemplate="item">
           <div class="product-item">
               <div class="product-item-content">
@@ -13,7 +10,6 @@
                   <div>
                       <h4 class="p-mb-1">{{review.name}}</h4>
                       <h6 class="p-mt-0 p-mb-3">{{review.content}}</h6>
-                      <h6 class="p-mt-0 p-mb-3">{{review.date}}</h6>
                   </div>
               </div>
           </div>

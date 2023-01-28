@@ -22,13 +22,49 @@
 :host ::ng-deep .p-carousel-item h6 {
   font-family: 'Roboto';
   font-size: 12px;
+  text-align: center;
+
 }
 
 :host ::ng-deep .p-carousel-item h4 {
   font-family: 'Roboto';
   line-break: anywhere;
+  text-align: center;
 }
 
 .custom-carousel {
   width: 100%;
+}
+
+:host ::ng-deep .p-carousel-items-container > .p-carousel-item:nth-child(5) {
+
+}
+
+:host ::ng-deep .middle-carousel-item {
+  h6 {
+    font-family: 'Roboto';
+    font-size: 24px;
+  }
+
+  h4 {
+    font-family: 'Roboto';
+    line-break: anywhere;
+  }
+}
+
+:host ::ng-deep .p-carousel-indicators {
+  display: none;
+}
+
+:host ::ng-deep .product-item-content {
+  height: 100%;
+  display: flex;
+}
+
+:host ::ng-deep .product-item-content > div {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 50px 1fr;
+  align-items: center;
+  justify-content: center;
 }
