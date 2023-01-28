@@ -48,7 +48,7 @@
   },
   "main.page.header": "Korepetitorė",
   "main.page.text" : "Rimtė Kamuntavičiūtė",
-  "main.page.button": "Susisiekime",
+  "main.page.button": "Registracija",
   "about.me.header":"Apie mane",
   "about.me.text":"\tSveiki, mano vardas Rimtė, esu anglų, lietuvių ir matematikos korepetitorė. Šiuo metu studijuoju psichologiją Vytauto didžiojo universitete ir paramediką Karaliaus Mindaugo profesiniame mokymo centre. Noriu padėti kitiems ir jau kelerius metus mokau mokinius kaip korepetitorė. Man patinka dirbti su kiekvienu mokiniu individualiai, stengiuosi, kad mokymasis būtų įdomus ir įtraukiantis, pagal kiekvieno mokinio skirtingą mokymosi tempą ir žinias. Laisvalaikiu mėgstu skaityti ir sekti naujausius psichologijos mokslinius tyrimus, savanoriauti padedant kitiems, bendraujant. Laukiu, kada galėsiu dirbti su jumis ir padėti jums siekti akademinių tikslų.",
   "blocks.block.first.header": "Gyvai grupė",
@@ -71,5 +71,8 @@
   "contacts.phone.label": "Telefonas",
   "contacts.socials.label": "Socialiniai tinklai",
   "contacts.message.label": "Žinutė",
-  "footer.text" : "@Rimtė Kamuntavičiūtė 2023"
+  "footer.text" : "@Rimtė Kamuntavičiūtė 2023",
+  "landing.page.mokau": "Mokau:\n\n1-10 klases Lietuvių kalbos.\n1-10 klases anglų kalbos.\n1-10 klases matematikos.\nPradinių klasių arba ikimokyklinio amžiaus vaikus\nmokau visų dalykų.",
+  "landing.page.ruošiu": "Ruošiu:\n\nStojamiesiems.\nKontroliniams/testams.\nStandartizuotiems.",
+  "landing.page.padedu": "Padedu:\n\nUžpildyti spragas.\nIšsiaiškinti koks mokymosi būdas yra tinkamiausias.\nDarau žinių lygio nustatymo testą."
 }

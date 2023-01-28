@@ -1,17 +1,32 @@
-<div class="landing-section">
+<div class="background-container">
+  <div class="landing-section">
     <div class="landing-grid app-grid">
-      <div class="title-container">
-        <p>
-          <span>{{"main.page.header" |translate}}</span>
-        </p>
-      </div>
       <div class="secondary-title-container">
-          <h1>{{"main.page.text" |translate }}</h1>
+        <h1>{{ "main.page.text" | translate }}</h1>
       </div>
       <div class="button-container">
-        <button pButton class="contact-me-button" [label]="'main.page.button' |translate"
-        (click)="openModal()">
-        </button>
+        <button
+          pButton
+          class="contact-me-button"
+          [label]="'main.page.button' | translate"
+          (click)="openModal()"
+        ></button>
       </div>
     </div>
+  </div>
 </div>
+
+<div class="app-grid columns">
+  <div class="grid-container">
+    <div class="grid-item">
+        <p>{{'landing.page.mokau' |translate}}</p>
+    </div>
+    <div class="grid-item">
+      <p>{{'landing.page.ruošiu' |translate}}</p>
+    </div>
+    <div class="grid-item">
+      <p>{{'landing.page.padedu' |translate}}</p>
+    </div>
+  </div>
+</div>
+

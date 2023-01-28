@@ -10,6 +10,7 @@
   @media (min-width: 650px){
     .block-grid { grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); }
   }
+
   .block-grid {
     position: static;
     display: grid;
@@ -36,8 +37,9 @@
       height: 100%;
       max-height: 330px;
       border-radius: 100px;
-      border: 1.5px solid black;
+      border: 1.5px solid rgba(0, 0, 0, 0);
       overflow: auto;
+      background: rgba(252, 252, 251, 0.611);
 
       p {
         text-align: center;
@@ -50,30 +52,12 @@
         font-weight: 700;
       }
     }
-
-    .block-1 {
-      background: #d8caaa;
-
-
-    }
-
-    .block-2 {
-      background: #d8caaa;
-    }
-
-    .block-3 {
-      background: #d8caaa;
-    }
-
-    .block-4 {
-      background: #d8caaa;
-    }
   }
 }
 
 .rate-div {
   width: 100%;
-  background: rgba(90, 80, 56, 0.432);
+  background: rgba(194,173,139);
 
   .text-clickable {
     margin-block-start: 0em;
