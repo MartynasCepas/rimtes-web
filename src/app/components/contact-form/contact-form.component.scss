@@ -15,7 +15,6 @@
     flex: 0.5;
 
     h3 {
-      padding-left: 80px;
       text-align: left;
     }
   }
@@ -30,5 +29,12 @@
 
 .contact-page {
   display: flex;
+}
 
+.inline {
+  display: flex;
+}
+
+.clickable {
+  cursor: pointer;
 }

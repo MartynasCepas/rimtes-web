@@ -9,14 +9,26 @@ import { Component } from '@angular/core';
 export class ContactsComponent {
 
   getEmail() {
-    return "El. paštas: " + Env.email;
+    return Env.email;
   }
 
   getPhone() {
-    return "Tel. nr: " + Env.phone;
+    return Env.phone;
   }
 
   getFacebook() {
-    return "Facebook: " + Env.facebook;
+    return Env.facebook;
+  }
+
+  goToEmail() {
+    window.open(`mailto:${this.getEmail()}`);
+  }
+
+  callPhoneNumber() {
+    window.location.href = 'tel:' + this.getPhone();
+  }
+
+  openFacebook() {
+    window.open(this.getFacebook());
   }
 }

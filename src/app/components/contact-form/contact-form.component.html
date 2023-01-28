@@ -4,9 +4,19 @@
   </div>
   <div class="contact-me-container">
     <div class="my-contacts">
-      <h3>{{ getEmail() }}</h3>
-      <h3>{{ getPhone() }}</h3>
-      <h3>{{ getFacebook() }}</h3>
+      <div class="inline">
+        <h3>El. paštas: </h3>
+        <h3 class="clickable" (click)="goToEmail()">{{ getEmail() }}</h3>
+      </div>
+      <div class="inline">
+        <h3>Tel. nr: </h3>
+        <h3 class="clickable" (click)="callPhoneNumber()">{{ getPhone() }}</h3>
+      </div>
+      <div class="inline">
+        <h3>Facebook: </h3>
+        <h3 class="clickable" (click)="openFacebook()">{{ getFacebook() }}</h3>
+      </div>
+
     </div>
   </div>
 </div>
