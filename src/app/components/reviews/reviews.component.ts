@@ -21,14 +21,9 @@ export class ReviewsComponent implements OnInit, AfterViewChecked {
       this.responsiveOptions = [
         {
             breakpoint: '1100px',
-            numVisible: 2,
-            numScroll: 2
-        },
-        {
-            breakpoint: '650px',
             numVisible: 1,
             numScroll: 1
-        }
+        },
     ];
     }
 
