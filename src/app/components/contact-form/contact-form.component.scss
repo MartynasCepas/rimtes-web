@@ -7,6 +7,9 @@
   width: 100%;
   height: 500px;
 
+  background-image: url("/assets/images/test-2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
   .my-contacts {
     display: flex;
@@ -23,6 +26,7 @@
 .contact-me-block {
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex: 0.5;
   min-width: 350px;
 }

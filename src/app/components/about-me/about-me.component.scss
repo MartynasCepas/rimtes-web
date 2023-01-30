@@ -29,6 +29,7 @@
       max-width: 1300px;
       justify-content: center;
       gap: 40px;
+      align-items: center;
 
       .about-me-image {
         flex: 0.4;
@@ -38,8 +39,16 @@
           width: 100%;
           min-width: 350px;
           border-radius: 50px;
-          margin-top: 40px;
         }
+      }
+
+
+      @media (min-width: 860px) {
+        .about-me-text { min-width: 575px; }
+      }
+
+      @media (max-width: 860px) {
+        .about-me-text { min-width: 350px; }
       }
 
       .about-me-text {
@@ -47,9 +56,10 @@
         background: white;
         padding-left: 1rem;
         padding-right: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         border-radius: 50px;
-        min-width: 350px;
-        height: 585px;
+        height: auto;
         display: flex;
         align-items: center;
 
@@ -60,9 +70,9 @@
           text-align: center;
         }
 
-        @media (max-width: 580px) {
+        @media (max-width: 860px) {
           p {
-            font-size: 20px;
+            font-size: 19px;
           }
         }
       }
