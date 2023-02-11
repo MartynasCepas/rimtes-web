@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Env } from 'src/env';
+import { enableProdMode } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +32,10 @@ export class AppComponent implements OnInit {
         this.scroll(event.url.replaceAll('-','').replaceAll('/', ''));
       }
     });
+
+    if(Env.production) {
+       enableProdMode()
+    }
   }
 
   scroll(id: string) {

@@ -1,5 +1,5 @@
 import { Review } from './../../models/review';
-import { AfterContentChecked, AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ViewChild } from '@angular/core';
 import ReviewsJson from '../../../assets/json/reviews.json';
 import { Carousel } from 'primeng/carousel';
 import { Renderer2 } from '@angular/core';
@@ -9,7 +9,7 @@ import { Renderer2 } from '@angular/core';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class ReviewsComponent implements OnInit, AfterViewChecked {
+export class ReviewsComponent implements AfterViewChecked {
     reviews: Review[] = [];
     responsiveOptions: any[] = [];
 
@@ -39,20 +39,14 @@ export class ReviewsComponent implements OnInit, AfterViewChecked {
           itemId = 4;
         }
         const item = itemsArray[itemId];
-        item.classList.add('middle-carousel-item');
+        item?.classList.add('middle-carousel-item');
       }
       else if (this.carousel.numVisible === 1) {
         itemsArray.forEach(item => {
-          if(!item.classList.contains('middle-carousel-item'))
+          if(!item?.classList.contains('middle-carousel-item'))
             this.renderer.addClass(item, 'middle-carousel-item');
         })
       }
     }
   }
-
-  ngOnInit(): void {
-    console.log(this.carousel)
-  }
-
-
 }

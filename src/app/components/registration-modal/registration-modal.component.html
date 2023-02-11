@@ -1,11 +1,11 @@
-<p-dialog [header]="'contacts.registration' | translate" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+<p-dialog [header]="'contacts.registration' | translate" [(visible)]="displayModal" [modal]="true" [style]="{width: 'auto'}"
     [draggable]="false" [resizable]="true" appendTo="body" (onHide)="closeModal()">
     <ng-template pTemplate="content">
       <div class="container">
         <div class="form-block">
           <div>
             <div class="form-container">
-              <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+              <form #heroForm="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <div class="row">
                     <div class="field">
@@ -114,7 +114,6 @@
                   pButton
                   class="btn btn-success"
                   [disabled]="!heroForm.form.valid"
-                  (click)="onSubmit()"
                 >
                   Submit
                 </button>

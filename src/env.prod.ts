@@ -3,6 +3,6 @@ export class Env {
   public static phone: string = "+37060865461";
   public static facebook: string = "https://www.facebook.com/rimte.kam";
 
-  public static emailApi: string = 'http://localhost:3000/send-email';
-  public static production: boolean = false;
+  public static emailApi: string = '191.101.2.14:3000/send-email';
+  public static production: boolean = true;
 }
