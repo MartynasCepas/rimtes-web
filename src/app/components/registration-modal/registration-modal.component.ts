@@ -20,13 +20,12 @@ export class RegistrationModalComponent {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.model);
     this.sendMail();
   }
 
   private sendMail() {
     const payload = {
-      to: 'martynas061@gmail.com',
+      to: 'rimtek7@gmail.com',
       subject: 'Form submission',
       html: `
         <p>First Name: ${this.model.firstName}</p>
@@ -53,5 +52,4 @@ export class RegistrationModalComponent {
     this.displayModal = false;
     this.displayModalChange.emit(this.displayModal);
   }
-
 }

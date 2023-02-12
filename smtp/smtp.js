@@ -20,8 +20,7 @@ app.post('/send-email', (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: '',
-      pass: ''
+      
     }
   });
 
