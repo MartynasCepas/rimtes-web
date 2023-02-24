@@ -65,12 +65,12 @@
   "reviews.header": "Atsiliepimai",
   "contacts.registration" : "Registracija",
   "contacts.header": "Kontaktai",
-  "contacts.first.name.label": "Vardas",
-  "contacts.last.name.label": "Pavardė",
-  "contacts.email.label": "El. Paštas",
-  "contacts.phone.label": "Telefono Nr.",
-  "contacts.socials.label": "Socialiniai tinklai",
-  "contacts.message.label": "Žinutė",
+  "contacts.first.name.label": "Vardas *",
+  "contacts.last.name.label": "Pavardė *",
+  "contacts.email.label": "El. Paštas *",
+  "contacts.phone.label": "Telefono Nr. *",
+  "contacts.socials.label": "Socialiniai tinklai (nebūtina)",
+  "contacts.message.label": "Žinutė *",
   "contacts.send.button": "Registruotis",
   "contacts.phone.placeholder": "+3706XXXXXXX",
   "contacts.socials.placeholder": "Jei susisiekti per socialinius tinklus",
@@ -78,5 +78,7 @@
   "footer.text" : "@Rimtė Kamuntavičiūtė 2023",
   "landing.page.mokau": "Mokau:\n\n1-10 klases Lietuvių kalbos.\n1-10 klases anglų kalbos.\n1-10 klases matematikos.\nPradinių klasių arba ikimokyklinio amžiaus vaikus\nmokau visų dalykų.",
   "landing.page.ruošiu": "Ruošiu:\n\nStojamiesiems testams.\nKontroliniams.\nStandartizuotiems egzaminams.",
-  "landing.page.padedu": "Padedu:\n\nUžpildyti spragas.\nIšsiaiškinti, koks mokymosi būdas yra tinkamiausias.\nDarau žinių lygio nustatymo testą."
+  "landing.page.padedu": "Padedu:\n\nUžpildyti spragas.\nIšsiaiškinti, koks mokymosi būdas yra tinkamiausias.\nDarau žinių lygio nustatymo testą.",
+  "registration.message": "Registracija sėkminga!",
+  "registration.details": "Dėl užklausos greitai susisieksime."
 }

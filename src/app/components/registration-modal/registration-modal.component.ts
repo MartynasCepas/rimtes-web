@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { MessageService } from 'primeng/api';
 import { Env } from 'src/env';
 import { Form } from './../../models/form';
 
@@ -16,7 +18,8 @@ export class RegistrationModalComponent {
   @Input() displayModal = false;
   @Output() displayModalChange = new EventEmitter<boolean>();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private messageService: MessageService,
+    private translate: TranslateService ) { }
 
   onSubmit() {
     this.submitted = true;
@@ -43,13 +46,29 @@ export class RegistrationModalComponent {
       })
     };
 
-    this.httpClient.post(Env.emailApi, payload, httpOptions).subscribe( (res) => {
-      this.closeModal()
+    this.httpClient.post(Env.emailApi, payload, httpOptions).subscribe({
+        next: () => {
+      //    this.closeModal();
+        },
+        error: () => {
+      //    this.closeModal();
+        },
     });
+    this.closeModal();
   }
 
   closeModal() {
+    this.showSuccess();
+    this.hideModal();
+  }
+
+  hideModal() {
     this.displayModal = false;
     this.displayModalChange.emit(this.displayModal);
+  }
+
+  showSuccess() {
+    this.messageService.clear();
+    this.messageService.add({severity:'success', summary: this.translate.instant("registration.message"), detail: this.translate.instant("registration.details")});
   }
 }

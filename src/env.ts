@@ -3,6 +3,6 @@ export class Env {
   public static phone: string = "+37060865461";
   public static facebook: string = "https://www.facebook.com/rimte.kam";
 
-  public static emailApi: string = 'http://rimte.lt:3000/send-email';
+  public static emailApi: string = 'https://rimte.lt:3000/send-email';
   public static production: boolean = false;
 }

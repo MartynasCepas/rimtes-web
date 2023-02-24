@@ -22,6 +22,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { RegistrationModalComponent } from './components/registration-modal/registration-modal.component';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RegistrationModalComponent } from './components/registration-modal/regi
 				deps: [HttpClient]
 			}
 		}),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent],
