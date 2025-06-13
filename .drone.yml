@@ -6,29 +6,39 @@ trigger:
   event:
     - push
     - custom
+  branch:
+    - main
 
 steps:
-  - name: build-and-push
-    image: docker:24-dind
+  - name: build-and-push-web
+    image: plugins/docker
     environment:
-      DOCKER_HOST: tcp://localhost:2375
-      DOCKER_TLS_CERTDIR: ""
-    commands:
-      # Build & push frontend
-      - docker build -t your-registry/rimtes-web:${DRONE_COMMIT_SHA} .
-      - docker push your-registry/rimtes-web:${DRONE_COMMIT_SHA}
-      - docker tag your-registry/rimtes-web:${DRONE_COMMIT_SHA} your-registry/rimtes-web:latest
-      - docker push your-registry/rimtes-web:latest
-      # Build & push SMTP service
-      - docker build -t your-registry/rimtes-smtp:${DRONE_COMMIT_SHA} ./smtp
-      - docker push your-registry/rimtes-smtp:${DRONE_COMMIT_SHA}
-      - docker tag your-registry/rimtes-smtp:${DRONE_COMMIT_SHA} your-registry/rimtes-smtp:latest
-      - docker push your-registry/rimtes-smtp:latest
+      REGISTRY_HOST:
+        from_secret: REGISTRY_HOST
+    settings:
+      registry: ${REGISTRY_HOST}
+      repo: ${REGISTRY_HOST}/rimtes-web
+      tags:
+        - ${DRONE_COMMIT_SHA}
+        - latest
+
+  - name: build-and-push-smtp
+    image: plugins/docker
+    environment:
+      REGISTRY_HOST:
+        from_secret: REGISTRY_HOST
+    settings:
+      registry: ${REGISTRY_HOST}
+      repo: ${REGISTRY_HOST}/rimtes-smtp
+      tags:
+        - ${DRONE_COMMIT_SHA}
+        - latest
 
   - name: deploy
     image: appleboy/drone-ssh
     settings:
-      host: server.local
+      host:
+        from_secret: SSH_HOST
       user: root
       port: 22
       key:
