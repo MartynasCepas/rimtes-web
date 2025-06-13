@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rimtes-web:latest
+    ports:
+      - "80:80"
+    restart: always
+
+  smtp:
+    build:
+      context: ./smtp
+      dockerfile: Dockerfile
+    image: rimtes-smtp:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+    restart: always
