@@ -29,7 +29,7 @@ steps:
       repo:     "192.168.50.200:5000/rimtes-smtp"
       insecure: true
       context:  "smtp"
-      dockerfile: "dockerfile"
+      dockerfile: "smtp/dockerfile"
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
