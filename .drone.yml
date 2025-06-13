@@ -17,9 +17,9 @@ steps:
       repo:     "192.168.50.200:5000/rimtes-web"
       insecure: true
       context:  "."
-      dockerfile: "dockerfile"
+      dockerfile: "Dockerfile"
       tags:
-        - "${DRONE_COMMIT_SHA}"
+        - ${DRONE_COMMIT_SHA}
         - latest
 
   - name: build-and-push-smtp
@@ -29,9 +29,9 @@ steps:
       repo:     "192.168.50.200:5000/rimtes-smtp"
       insecure: true
       context:  "smtp"
-      dockerfile: "dockerfile"
+      dockerfile: "Dockerfile"
       tags:
-        - "${DRONE_COMMIT_SHA}"
+        - ${DRONE_COMMIT_SHA}
         - latest
 
   - name: deploy
