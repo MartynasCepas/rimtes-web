@@ -1,0 +1,45 @@
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  event:
+    - push
+
+steps:
+  - name: build-and-push
+    image: docker:24-dind
+    environment:
+      DOCKER_HOST: tcp://localhost:2375
+      DOCKER_TLS_CERTDIR: ""
+    commands:
+      # Build & push frontend
+      - docker build -t your-registry/rimtes-web:${DRONE_COMMIT_SHA} .
+      - docker push your-registry/rimtes-web:${DRONE_COMMIT_SHA}
+      - docker tag your-registry/rimtes-web:${DRONE_COMMIT_SHA} your-registry/rimtes-web:latest
+      - docker push your-registry/rimtes-web:latest
+      # Build & push SMTP service
+      - docker build -t your-registry/rimtes-smtp:${DRONE_COMMIT_SHA} ./smtp
+      - docker push your-registry/rimtes-smtp:${DRONE_COMMIT_SHA}
+      - docker tag your-registry/rimtes-smtp:${DRONE_COMMIT_SHA} your-registry/rimtes-smtp:latest
+      - docker push your-registry/rimtes-smtp:latest
+
+  - name: deploy
+    image: appleboy/drone-ssh
+    settings:
+      host: server.local
+      user: root
+      port: 22
+      key:
+        from_secret: SSH_DEPLOY_KEY
+    environment:
+      EMAIL_USER:
+        from_secret: EMAIL_USER
+      EMAIL_PASS:
+        from_secret: EMAIL_PASS
+    script:
+      - cd /mnt/user/appdata/rimtes
+      - echo "EMAIL_USER=${EMAIL_USER}" > .env
+      - echo "EMAIL_PASS=${EMAIL_PASS}" >> .env
+      - docker-compose pull
+      - docker-compose up -d --build
