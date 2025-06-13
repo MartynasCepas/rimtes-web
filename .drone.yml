@@ -3,17 +3,17 @@ type: docker
 name: default
 
 ############################################################
-#  Triggers
+# Trigger
 ############################################################
 trigger:
   event:
     - push
     - custom
   branch:
-    - main                         # CI/CD runs only on main
+    - main
 
 ############################################################
-#  Build – Web SPA
+# Step 1 – Build + push Angular web image
 ############################################################
 steps:
 - name: build-and-push-web
@@ -23,13 +23,13 @@ steps:
     repo:     192.168.50.200:5000/rimtes-web
     insecure: true
     context:  .
-    dockerfile: dockerfile        # top-level Dockerfile
+    dockerfile: dockerfile
     tags:
       - ${DRONE_COMMIT_SHA}
       - latest
 
 ############################################################
-#  Build – SMTP micro-service
+# Step 2 – Build + push SMTP image
 ############################################################
 - name: build-and-push-smtp
   image: plugins/docker
@@ -37,46 +37,45 @@ steps:
     registry: 192.168.50.200:5000
     repo:     192.168.50.200:5000/rimtes-smtp
     insecure: true
-    context:  smtp                # build context is ./smtp
-    dockerfile: smtp/dockerfile   # Dockerfile path (repo-root-relative)
+    context:  smtp
+    dockerfile: smtp/dockerfile
     tags:
       - ${DRONE_COMMIT_SHA}
       - latest
 
 ############################################################
-#  Deploy to Unraid over SSH
+# Step 3 – Deploy to Un-raid via SSH
 ############################################################
 - name: deploy
   image: appleboy/drone-ssh
-  # Secrets the script needs **for command substitution**
+
+  # ▸ secrets that must be expanded inside the script
   environment:
     EMAIL_USER:
       from_secret: EMAIL_USER
     EMAIL_PASS:
       from_secret: EMAIL_PASS
 
+  # ▸ SSH connection + remote commands
   settings:
-    # ▸ Connection
     host:
       from_secret: SSH_HOST
     port:
       from_secret: SSH_PORT
-    username: root                # correct key for the plugin
+    username: root
     key:
       from_secret: SSH_DEPLOY_KEY
 
-    # ▸ Remote commands – run on the Unraid host
     script:
-      - set -ex                                   # echo commands, fail fast
-
-      # 1 ▸ pull freshly-built images
+      - set -ex                                      # echo commands, fail fast
+      # pull images just built by previous steps
       - docker pull 192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
       - docker pull 192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
-      # 2 ▸ stop & remove old containers (ignore if absent)
+      # remove old containers if present
       - docker rm -f rimtes-web rimtes-smtp || true
 
-      # 3 ▸ launch new containers
+      # start new versions
       - docker run -d --name rimtes-web \
           --restart=always              \
           -p 3004:80                    \
@@ -89,14 +88,10 @@ steps:
           -e EMAIL_PASS=${EMAIL_PASS}   \
           192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
-      # 4 ▸ show status so it appears in the Drone log
+      # show status in Drone log
       - docker ps --filter name=rimtes --format '{{.Names}}\t{{.Status}}\t{{.Ports}}'
 
-############################################################
-#  Optional ordering (Drone v1.8+ supports depends_on)
-############################################################
-depends_on:                         # ensure deploy waits for both builds
-  deploy:
-    step:
-      - build-and-push-web
-      - build-and-push-smtp
+  # ▸ make sure this step waits for both image-build steps
+  depends_on:
+    - build-and-push-web
+    - build-and-push-smtp
