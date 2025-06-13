@@ -13,30 +13,28 @@ steps:
   - name: build-and-push-web
     image: plugins/docker
     settings:
-      registry: "${REGISTRY_HOST}:${REGISTRY_PORT}"
-      repo:     "${REGISTRY_HOST}:${REGISTRY_PORT}/rimtes-web"
-      context:  .
-      dockerfile: dockerfile
+      registry: "server.local:5000"
+      repo:     "server.local:5000/rimtes-web"
       tags:
-        - "${DRONE_COMMIT_SHA}"
+        - ${DRONE_COMMIT_SHA}
         - latest
 
   - name: build-and-push-smtp
     image: plugins/docker
     settings:
-      registry: "${REGISTRY_HOST}:${REGISTRY_PORT}"
-      repo:     "${REGISTRY_HOST}:${REGISTRY_PORT}/rimtes-smtp"
-      context:  smtp
-      dockerfile: dockerfile
+      registry: "server.local:5000"
+      repo:     "server.local:5000/rimtes-smtp"
       tags:
-        - "${DRONE_COMMIT_SHA}"
+        - ${DRONE_COMMIT_SHA}
         - latest
 
   - name: deploy
     image: appleboy/drone-ssh
     settings:
-      host: "${SSH_HOST}"
-      port: "${SSH_PORT}"
+      host:
+        from_secret: SSH_HOST
+      port:
+        from_secret: SSH_PORT
       user: root
       key:
         from_secret: SSH_DEPLOY_KEY
