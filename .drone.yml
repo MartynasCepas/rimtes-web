@@ -13,10 +13,11 @@ steps:
   - name: build-and-push-web
     image: plugins/docker
     settings:
-      registry: "server.local:5000"
-      repo:     "server.local:5000/rimtes-web"
-      context:  .
-      dockerfile: dockerfile
+      # use the host IP and HTTP port
+      registry: "192.168.50.200:5000"
+      repo:     "192.168.50.200:5000/rimtes-web"
+      # tell the plugin it's an insecure (non-TLS) registry
+      insecure: true
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
@@ -24,10 +25,9 @@ steps:
   - name: build-and-push-smtp
     image: plugins/docker
     settings:
-      registry: "server.local:5000"
-      repo:     "server.local:5000/rimtes-smtp"
-      context:  smtp
-      dockerfile: dockerfile
+      registry: "192.168.50.200:5000"
+      repo:     "192.168.50.200:5000/rimtes-smtp"
+      insecure: true
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
