@@ -2,62 +2,81 @@ kind: pipeline
 type: docker
 name: default
 
+############################################################
+#  Triggers
+############################################################
 trigger:
   event:
     - push
     - custom
   branch:
-    - main
+    - main                         # CI/CD runs only on main
 
+############################################################
+#  Build – Web SPA
+############################################################
 steps:
-  - name: build-and-push-web
-    image: plugins/docker
-    settings:
-      registry: "192.168.50.200:5000"
-      repo:     "192.168.50.200:5000/rimtes-web"
-      insecure: true
-      context:  "."
-      dockerfile: "dockerfile"
-      tags:
-        - ${DRONE_COMMIT_SHA}
-        - latest
+- name: build-and-push-web
+  image: plugins/docker
+  settings:
+    registry: 192.168.50.200:5000
+    repo:     192.168.50.200:5000/rimtes-web
+    insecure: true
+    context:  .
+    dockerfile: dockerfile        # top-level Dockerfile
+    tags:
+      - ${DRONE_COMMIT_SHA}
+      - latest
 
-  - name: build-and-push-smtp
-    image: plugins/docker
-    settings:
-      registry: "192.168.50.200:5000"
-      repo:     "192.168.50.200:5000/rimtes-smtp"
-      insecure: true
-      context:  "smtp"
-      dockerfile: "smtp/dockerfile"
-      tags:
-        - ${DRONE_COMMIT_SHA}
-        - latest
+############################################################
+#  Build – SMTP micro-service
+############################################################
+- name: build-and-push-smtp
+  image: plugins/docker
+  settings:
+    registry: 192.168.50.200:5000
+    repo:     192.168.50.200:5000/rimtes-smtp
+    insecure: true
+    context:  smtp                # build context is ./smtp
+    dockerfile: smtp/dockerfile   # Dockerfile path (repo-root-relative)
+    tags:
+      - ${DRONE_COMMIT_SHA}
+      - latest
 
-  - name: deploy
-    image: appleboy/drone-ssh
-    settings:
-      host:
-        from_secret: SSH_HOST
-      port:
-        from_secret: SSH_PORT
-      user: root
-      key:
-        from_secret: SSH_DEPLOY_KEY
+############################################################
+#  Deploy to Unraid over SSH
+############################################################
+- name: deploy
+  image: appleboy/drone-ssh
+  # Secrets the script needs **for command substitution**
+  environment:
+    EMAIL_USER:
+      from_secret: EMAIL_USER
+    EMAIL_PASS:
+      from_secret: EMAIL_PASS
 
-    environment:
-      EMAIL_USER:
-        from_secret: EMAIL_USER
-      EMAIL_PASS:
-        from_secret: EMAIL_PASS
+  settings:
+    # ▸ Connection
+    host:
+      from_secret: SSH_HOST
+    port:
+      from_secret: SSH_PORT
+    username: root                # correct key for the plugin
+    key:
+      from_secret: SSH_DEPLOY_KEY
 
+    # ▸ Remote commands – run on the Unraid host
     script:
-      - set -ex
+      - set -ex                                   # echo commands, fail fast
+
+      # 1 ▸ pull freshly-built images
       - docker pull 192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
       - docker pull 192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
+      # 2 ▸ stop & remove old containers (ignore if absent)
       - docker rm -f rimtes-web rimtes-smtp || true
 
+      # 3 ▸ launch new containers
       - docker run -d --name rimtes-web \
           --restart=always              \
           -p 3004:80                    \
@@ -70,5 +89,14 @@ steps:
           -e EMAIL_PASS=${EMAIL_PASS}   \
           192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
-      - docker ps --filter name=rimtes --format '{{.Names}}\t{{.Image}}\t{{.Status}}'
+      # 4 ▸ show status so it appears in the Drone log
+      - docker ps --filter name=rimtes --format '{{.Names}}\t{{.Status}}\t{{.Ports}}'
 
+############################################################
+#  Optional ordering (Drone v1.8+ supports depends_on)
+############################################################
+depends_on:                         # ensure deploy waits for both builds
+  deploy:
+    step:
+      - build-and-push-web
+      - build-and-push-smtp
