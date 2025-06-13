@@ -1,5 +1,5 @@
-import { Env } from '../../../../environments/env';
 import { Component } from '@angular/core';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-contact-form',
@@ -9,15 +9,15 @@ import { Component } from '@angular/core';
 export class ContactsComponent {
 
   getEmail() {
-    return Env.email;
+    return environment.email;
   }
 
   getPhone() {
-    return Env.phone;
+    return environment.phone;
   }
 
   getFacebook() {
-    return Env.facebook;
+    return environment.facebook;
   }
 
   goToEmail() {

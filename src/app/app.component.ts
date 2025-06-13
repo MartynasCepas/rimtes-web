@@ -2,8 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Env } from 'environments/env';
 import { enableProdMode } from '@angular/core';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    if(Env.production) {
+    if(environment.production) {
        enableProdMode()
     }
   }
