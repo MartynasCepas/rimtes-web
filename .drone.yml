@@ -3,33 +3,28 @@ type: docker
 name: default
 
 trigger:
-  event:
-    - push
-    - custom
-  branch:
-    - main
+  event: [ push, custom ]
+  branch: [ main ]
 
 steps:
   - name: build-and-push-web
     image: plugins/docker
-    environment:
-      REGISTRY_HOST:
-        from_secret: REGISTRY_HOST
     settings:
-      registry: ${REGISTRY_HOST}
-      repo: ${REGISTRY_HOST}/rimtes-web
+      registry: ${REGISTRY_HOST}:${REGISTRY_PORT}
+      repo:     ${REGISTRY_HOST}:${REGISTRY_PORT}/rimtes-web
+      context:  .
+      dockerfile: dockerfile
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
 
   - name: build-and-push-smtp
     image: plugins/docker
-    environment:
-      REGISTRY_HOST:
-        from_secret: REGISTRY_HOST
     settings:
-      registry: ${REGISTRY_HOST}
-      repo: ${REGISTRY_HOST}/rimtes-smtp
+      registry: ${REGISTRY_HOST}:${REGISTRY_PORT}
+      repo:     ${REGISTRY_HOST}:${REGISTRY_PORT}/rimtes-smtp
+      context:  smtp
+      dockerfile: dockerfile
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
@@ -37,10 +32,9 @@ steps:
   - name: deploy
     image: appleboy/drone-ssh
     settings:
-      host:
-        from_secret: SSH_HOST
+      host: ${SSH_HOST}
+      port: ${SSH_PORT}
       user: root
-      port: 22
       key:
         from_secret: SSH_DEPLOY_KEY
     environment:
