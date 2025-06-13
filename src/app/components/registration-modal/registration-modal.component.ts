@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
-import { Env } from 'src/env';
 import { Form } from './../../models/form';
+import { environment } from 'environments/environment';
 
 
 @Component({
@@ -46,7 +46,7 @@ export class RegistrationModalComponent {
       })
     };
 
-    this.httpClient.post(Env.emailApi, payload, httpOptions).subscribe({
+    this.httpClient.post(environment.emailApi, payload, httpOptions).subscribe({
         next: () => {
       //    this.closeModal();
         },

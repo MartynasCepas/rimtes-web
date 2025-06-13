@@ -44,14 +44,30 @@ steps:
       user: root
       key:
         from_secret: SSH_DEPLOY_KEY
+
     environment:
       EMAIL_USER:
         from_secret: EMAIL_USER
       EMAIL_PASS:
         from_secret: EMAIL_PASS
+
     script:
-      - cd /mnt/user/appdata/rimtes
-      - echo "EMAIL_USER=${EMAIL_USER}" > .env
-      - echo "EMAIL_PASS=${EMAIL_PASS}" >> .env
-      - docker-compose pull
-      - docker-compose up -d --build
+      - docker pull 192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
+      - docker pull 192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
+
+      - docker rm -f rimtes-web rimtes-smtp || true
+
+      - docker run -d --name rimtes-web \
+          --restart=always              \
+          -p 3004:80                    \
+          192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
+
+      - docker run -d --name rimtes-smtp \
+          --restart=always              \
+          -p 3005:3000                  \
+          -e EMAIL_USER=${EMAIL_USER}   \
+          -e EMAIL_PASS=${EMAIL_PASS}   \
+          192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
+
+      - docker ps --filter name=rimtes --format '{{.Names}}\t{{.Image}}\t{{.Status}}'
+

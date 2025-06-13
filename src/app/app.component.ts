@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Env } from 'src/env';
+import { Env } from 'environments/env';
 import { enableProdMode } from '@angular/core';
 
 @Component({
