@@ -5,6 +5,7 @@ name: default
 trigger:
   event:
     - push
+    - custom
 
 steps:
   - name: build-and-push
