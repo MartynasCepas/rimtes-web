@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     image: rimtes-web:latest
     ports:
       - "80:80"
@@ -13,7 +13,7 @@ services:
   smtp:
     build:
       context: ./smtp
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     image: rimtes-smtp:latest
     ports:
       - "3000:3000"
