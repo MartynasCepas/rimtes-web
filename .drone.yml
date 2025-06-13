@@ -67,31 +67,18 @@ steps:
       from_secret: SSH_DEPLOY_KEY
 
     script:
-      - set -ex                                      # echo commands, fail fast
-      # pull images just built by previous steps
+      - set -ex
       - docker pull 192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
       - docker pull 192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
-      # remove old containers if present
       - docker rm -f rimtes-web rimtes-smtp || true
 
-      # start new versions
-      - docker run -d --name rimtes-web \
-          --restart=always              \
-          -p 3004:80                    \
-          192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
+      - docker run -d --name rimtes-web --restart=always -p 3004:80 192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
 
-      - docker run -d --name rimtes-smtp \
-          --restart=always              \
-          -p 3005:3000                  \
-          -e EMAIL_USER=${EMAIL_USER}   \
-          -e EMAIL_PASS=${EMAIL_PASS}   \
-          192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
+      - docker run -d --name rimtes-smtp --restart=always -p 3005:3000 -e EMAIL_USER=${EMAIL_USER} -e EMAIL_PASS=${EMAIL_PASS} 192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
-      # show status in Drone log
       - docker ps --filter name=rimtes --format '{{.Names}}\t{{.Status}}\t{{.Ports}}'
 
-  # ▸ make sure this step waits for both image-build steps
   depends_on:
     - build-and-push-web
     - build-and-push-smtp
