@@ -52,6 +52,7 @@ steps:
         from_secret: EMAIL_PASS
 
     script:
+      - set -ex
       - docker pull 192.168.50.200:5000/rimtes-web:${DRONE_COMMIT_SHA}
       - docker pull 192.168.50.200:5000/rimtes-smtp:${DRONE_COMMIT_SHA}
 
