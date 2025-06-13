@@ -13,7 +13,7 @@ services:
   smtp:
     build:
       context: ./smtp
-      dockerfile: dockerfile
+      dockerfile: smtp/dockerfile
     image: rimtes-smtp:latest
     ports:
       - "3000:3000"
