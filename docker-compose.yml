@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    image: rimtes-web:latest
+    image: 192.168.50.200:5000/rimtes-web:latest
     ports:
       - "80:80"
     restart: always
@@ -14,7 +14,7 @@ services:
     build:
       context: ./smtp
       dockerfile: smtp/dockerfile
-    image: rimtes-smtp:latest
+    image: 192.168.50.200:5000/rimtes-smtp:latest
     ports:
       - "3000:3000"
     environment:
